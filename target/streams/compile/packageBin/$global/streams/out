@@ -1,0 +1,23 @@
+[0m[[0minfo[0m] [0mPackaging C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\photom_2.10-0.1-SNAPSHOT.jar ...[0m
+[0m[[0mdebug[0m] [0mInput file mappings:[0m
+[0m[[0mdebug[0m] [0m	main\scala\test[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\test[0m
+[0m[[0mdebug[0m] [0m	main\scala\test\FaceDetection$.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\test\FaceDetection$.class[0m
+[0m[[0mdebug[0m] [0m	main\scala[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala[0m
+[0m[[0mdebug[0m] [0m	main\scala\test\RectPanel.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\test\RectPanel.class[0m
+[0m[[0mdebug[0m] [0m	main[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main[0m
+[0m[[0mdebug[0m] [0m	main\scala\test\FaceDetectionClass.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\test\FaceDetectionClass.class[0m
+[0m[[0mdebug[0m] [0m	main\scala\test\PanelDemo.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\test\PanelDemo.class[0m
+[0m[[0mdebug[0m] [0m	main\scala\test\FaceDetection$$anon$1.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\test\FaceDetection$$anon$1.class[0m
+[0m[[0mdebug[0m] [0m	main\scala\test\PicPanel.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\test\PicPanel.class[0m
+[0m[[0mdebug[0m] [0m	main\scala\test\FaceDetection.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\test\FaceDetection.class[0m
+[0m[[0minfo[0m] [0mDone packaging.[0m
