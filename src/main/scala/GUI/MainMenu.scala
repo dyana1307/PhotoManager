@@ -9,7 +9,7 @@ object MainMenu{
 
 		try {
     		for ((info : LookAndFeelInfo) <- UIManager.getInstalledLookAndFeels()) {
-        		if ("Napkin".equals(info.getName())) {
+        		if ("Nimbus".equals(info.getName())) {
             		UIManager.setLookAndFeel(info.getClassName())
         		}
     		}
@@ -24,9 +24,14 @@ object MainMenu{
 }
 
 import java.awt._
+import java.awt.image.BufferedImage
+import javax.imageio.ImageIO
+import java.io.File
 class MainPanel extends JPanel{
+	var label: JLabel = new JLabel(new ImageIcon(new ImageIcon("Pics/CoverPic.jpg").getImage().getScaledInstance(600, 500, Image.SCALE_SMOOTH)))
 	setLayout(new BorderLayout)
-	setPreferredSize(new Dimension(500, 500))
+	setPreferredSize(new Dimension(800, 500))
+	add(label, BorderLayout.CENTER)
 	add(new ButtonPanel, BorderLayout.EAST)
 	
 }
@@ -40,6 +45,6 @@ class ButtonPanel extends JPanel{
 	add(label)
 	add(new JButton("Create Album"))
 	add(new JButton("Options"))
-	add(new JButton("Exit"))
+	add(new ExitButton)
 }
 

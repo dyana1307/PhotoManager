@@ -57,3 +57,17 @@ run
 compile
 run
 package
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+run -deprecation
