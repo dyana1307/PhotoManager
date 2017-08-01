@@ -1,10 +1,10 @@
 // This sample uses the Apache HTTP client library(org.apache.httpcomponents:httpclient:4.2.4)
 // and the org.json library (org.json:json:20170516).
 
-  package main.scala.test
+  package main.scala.FaceAPI
 
   import swing._
-  import javax.swing.{JLayeredPane, JPanel, JLabel, ImageIcon}
+  import javax.swing._
   import java.awt.{Image, Graphics, Color, Rectangle}
   
   object FaceDetection{
