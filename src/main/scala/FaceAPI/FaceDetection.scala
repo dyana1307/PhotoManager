@@ -3,9 +3,11 @@
 
   package main.scala.FaceAPI
 
+  import main.scala.GUI.DetectedFacesPanel
+
   import swing._
   import javax.swing._
-  import java.awt.{Image, Graphics, Color, Rectangle}
+  import java.awt._
   
   object FaceDetection{
   def main(args: Array[String]) : Unit = {
@@ -14,33 +16,10 @@
     var panel = new PanelDemo;
     var frame = new MainFrame{
     	title = "Test"
-    	contents = Component.wrap(panel)
+    	contents = swing.Component.wrap(panel)
     }
     frame.visible = true
   }
-}
-
-	class RectPanel(val picLink : String) extends JPanel{
-
-	import java.awt.image.BufferedImage
-	import javax.imageio.ImageIO
-	import java.io.File
-	import math._
-
-	setOpaque(false)
-	var bimg : BufferedImage = ImageIO.read(new File(picLink))
-	println("Width: " + bimg.getWidth() + " Height: " + bimg.getHeight() + "Percentage width: " + (round((141 : Float) / bimg.getWidth() * 500)) + "Percentage Height: " + round(((209 : Float) / bimg.getHeight() * 500)))
-	override def paintComponent(g: Graphics) = {
-		super.paintComponent(g)
-		g.setColor(Color.CYAN)
-		g.drawRect(round((331 : Float) / bimg.getWidth() * 500), round(((144 : Float) / bimg.getHeight() * 500)), round((60: Float) / bimg.getWidth() * 500), round((60: Float) / bimg.getHeight() * 500))
-		// g.drawRect(331, 144, 60, 60)
-		// g.drawRect(98, 47, 52, 52)
-		// g.drawRect(131, 116, 43, 43)
-		// g.drawRect(290, 58, 52, 52)
-		// g.drawRect(209, 141, 48, 48)
-		// g.drawRect(195, 40, 43, 43)
-	}
 }
 
 	class PicPanel(val picLink : String) extends JPanel{
@@ -53,7 +32,7 @@
   	setPreferredSize(new Dimension(500, 500))
   	val picLink : String = "Pics/test.png"
   	var panel1 : PicPanel = new PicPanel(picLink)
-  	var panel2 : RectPanel = new RectPanel(picLink)
+  	var panel2 : DetectedFacesPanel = new DetectedFacesPanel(picLink)
   	panel1.setBounds(0, 0, 500, 500)
   	panel2.setBounds(0, 0, 500, 500)
 	add(panel1, new Integer(1))

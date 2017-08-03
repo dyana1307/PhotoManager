@@ -3,6 +3,7 @@ package main.scala.GUI
 import swing._
 import javax.swing._
 import javax.swing.UIManager.LookAndFeelInfo
+import main.scala.Resources.Resources
 
 object MainMenu{
 	def main(args: Array[String]) : Unit = {
@@ -20,6 +21,13 @@ object MainMenu{
 			contents = Component.wrap(mainPanel)
 		}
 		frame.visible = true
+		import java.io.File
+		var file : File = new File("Pics/CoverPic.jpg")
+		Resources.addToFilePaths(file)
+		for (x <- Resources.filePaths){
+			println(x.getPath())
+		}
+
 	}
 }
 
@@ -43,7 +51,7 @@ class ButtonPanel extends JPanel{
 	var label : JLabel = new JLabel("Welcome to Photo Manager!")
 	label.setHorizontalAlignment(SwingConstants.CENTER)
 	add(label)
-	add(new JButton("Create Album"))
+	add(new BrowseButton)
 	add(new JButton("Options"))
 	add(new ExitButton)
 }

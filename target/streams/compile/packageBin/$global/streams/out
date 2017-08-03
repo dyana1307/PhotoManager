@@ -8,6 +8,8 @@
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\FaceAPI[0m
 [0m[[0mdebug[0m] [0m	main\scala\GUI\MainMenu$$anonfun$main$2.class[0m
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\GUI\MainMenu$$anonfun$main$2.class[0m
+[0m[[0mdebug[0m] [0m	main\scala\GUI\BrowseButton.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\GUI\BrowseButton.class[0m
 [0m[[0mdebug[0m] [0m	main\scala\FaceAPI\PicPanel.class[0m
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\FaceAPI\PicPanel.class[0m
 [0m[[0mdebug[0m] [0m	main\scala\GUI\MainMenu$$anonfun$main$1.class[0m
@@ -16,6 +18,8 @@
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\GUI\MainMenu.class[0m
 [0m[[0mdebug[0m] [0m	main\scala\GUI\MainPanel.class[0m
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\GUI\MainPanel.class[0m
+[0m[[0mdebug[0m] [0m	main\scala\GUI\ExitButton.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\GUI\ExitButton.class[0m
 [0m[[0mdebug[0m] [0m	main\scala\FaceAPI\FaceDetection$.class[0m
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\FaceAPI\FaceDetection$.class[0m
 [0m[[0mdebug[0m] [0m	main[0m
@@ -32,8 +36,12 @@
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\FaceAPI\RectPanel.class[0m
 [0m[[0mdebug[0m] [0m	main\scala\FaceAPI\PanelDemo.class[0m
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\FaceAPI\PanelDemo.class[0m
+[0m[[0mdebug[0m] [0m	main\scala\GUI\ExitButton$$anon$1.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\GUI\ExitButton$$anon$1.class[0m
 [0m[[0mdebug[0m] [0m	main\scala\FaceAPI\FaceDetectionClass.class[0m
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\FaceAPI\FaceDetectionClass.class[0m
+[0m[[0mdebug[0m] [0m	main\scala\GUI\BrowseButton$$anon$1.class[0m
+[0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\GUI\BrowseButton$$anon$1.class[0m
 [0m[[0mdebug[0m] [0m	main\scala\GUI\MainMenu$.class[0m
 [0m[[0mdebug[0m] [0m	  C:\Users\Dyana\workspace\PhotoM\target\scala-2.10\classes\main\scala\GUI\MainMenu$.class[0m
 [0m[[0minfo[0m] [0mDone packaging.[0m
