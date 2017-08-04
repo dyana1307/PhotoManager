@@ -1,5 +1,7 @@
 package main.scala.GUI
 
+import main.scala.Resources.Resources
+
 import java.awt.event.{ActionListener, ActionEvent}
 import javax.swing._
 

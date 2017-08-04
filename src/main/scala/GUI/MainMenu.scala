@@ -1,6 +1,7 @@
 package main.scala.GUI
 
 import swing._
+import java.awt.Point
 import javax.swing._
 import javax.swing.UIManager.LookAndFeelInfo
 import main.scala.Resources.Resources
@@ -14,20 +15,14 @@ object MainMenu{
             		UIManager.setLookAndFeel(info.getClassName())
         		}
     		}
-	}
-		var mainPanel = new MainPanel
+		}
+		Resources.mainPanel.add(new MainPanel)
 		var frame = new MainFrame{
 			title = "Photo Manager"
-			contents = Component.wrap(mainPanel)
+			contents = Component.wrap(Resources.mainPanel)
+			location = Resources.centreOfScreen
 		}
 		frame.visible = true
-		import java.io.File
-		var file : File = new File("Pics/CoverPic.jpg")
-		Resources.addToFilePaths(file)
-		for (x <- Resources.filePaths){
-			println(x.getPath())
-		}
-
 	}
 }
 

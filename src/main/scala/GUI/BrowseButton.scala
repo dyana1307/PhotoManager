@@ -2,6 +2,7 @@ package main.scala.GUI
 
 import java.awt.event.{ActionListener, ActionEvent}
 import javax.swing._
+import java.io.File
 import main.scala.Resources.Resources
 
 class BrowseButton extends JButton{
@@ -9,15 +10,15 @@ class BrowseButton extends JButton{
 	addActionListener(new ActionListener(){
 
 		def actionPerformed(e:ActionEvent){
-			var fileChooser : JFileChooser = new JFileChooser
+			var initialPath : File = new File("C:/Users/Dyana/workspace/PhotoM/Pics")
+			var fileChooser : JFileChooser = new JFileChooser(initialPath)
 			fileChooser.setMultiSelectionEnabled(true)
 			var rVal : Int = fileChooser.showOpenDialog(null)
-			//if(rVal == JFIleChooser.APPROVE_OPTION)
-
+			if(rVal == JFileChooser.APPROVE_OPTION){
+				Resources.selectedFilePath = fileChooser.getSelectedFile().getPath()
+				Resources.getCurrentPanel
+				Resources.switchPanel(new PhotoPreview)
+			}
 		}
 	})
-
-	import java.io.File
-	var file : File = new File("Pics/test.png")
-	Resources.addToFilePaths(file)
 }

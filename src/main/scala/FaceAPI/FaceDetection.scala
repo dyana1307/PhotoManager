@@ -1,124 +1,97 @@
 // This sample uses the Apache HTTP client library(org.apache.httpcomponents:httpclient:4.2.4)
 // and the org.json library (org.json:json:20170516).
 
-  package main.scala.FaceAPI
+package main.scala.FaceAPI
 
-  import main.scala.GUI.DetectedFacesPanel
+import main.scala.GUI.DetectedFacesPanel
+import main.scala.Resources.Resources
 
-  import swing._
-  import javax.swing._
-  import java.awt._
-  
-  object FaceDetection{
-  def main(args: Array[String]) : Unit = {
-    var test  = new FaceDetectionClass("http://www.abta.org/assets/images/treatments/support-group-image-resize.png");
-    println(test.faceDetect);
-    var panel = new PanelDemo;
-    var frame = new MainFrame{
-    	title = "Test"
-    	contents = swing.Component.wrap(panel)
-    }
-    frame.visible = true
-  }
-}
+import swing._
+import javax.swing._
+import java.awt._
+import java.io.File
 
-	class PicPanel(val picLink : String) extends JPanel{
-		var label: JLabel = new JLabel(new ImageIcon(new ImageIcon(picLink).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH)))
-		add(label)
+object FaceDetection{
+
+	def faceDetect(picLink : String) : Array[(Int, Int, Int, Int)] = {
+
+		import java.net.URI
+		import org.apache.http.HttpEntity
+		import org.apache.http.HttpResponse
+		import org.apache.http.client.HttpClient
+		import org.apache.http.client.methods.HttpPost
+		import org.apache.http.entity.{ByteArrayEntity, ContentType}
+		import org.apache.http.impl.client.DefaultHttpClient
+		import org.apache.http.client.utils.URIBuilder
+		import org.apache.http.util.EntityUtils
+		import org.json.JSONArray
+		import org.json.JSONObject
+		// **********************************************
+		// *** Update or verify the following values. ***
+		// **********************************************
+
+		// Replace the subscriptionKey string value with your valid subscription key.
+		val subscriptionKey: String = "f46eacf7b3e241f792ae9111d2ca95c7";
+
+		// Replace or verify the region.
+		//
+		// You must use the same region in your REST API call as you used to obtain your subscription keys.
+		// For example, if you obtained your subscription keys from the westus region, replace
+		// "westcentralus" in the URI below with "westus".
+		//
+		// NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
+		// a free trial subscription key, you should not need to change this region.
+		val uriBase: String = "https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect";
+
+		val httpclient: HttpClient = new DefaultHttpClient;
+		try {
+			var builder: URIBuilder = new URIBuilder(uriBase);
+
+			// Request parameters. All of them are optional.
+			builder.setParameter("returnFaceId", "true");
+			//builder.setParameter("returnFaceLandmarks", "false");
+			//builder.setParameter("returnFaceAttributes", "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise");
+
+			// Prepare the URI for the REST API call.
+			var uri: URI = builder.build();
+			var request: HttpPost = new HttpPost(uri);
+
+			// Request headers.
+			request.setHeader("Content-Type", "application/octet-stream");
+			request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+
+			// Request body.
+			import java.nio.file.{Files, Paths}
+			var picToByte : Array[Byte] = Files.readAllBytes(Paths.get(picLink))
+			var reqEntity = new ByteArrayEntity(picToByte, ContentType.APPLICATION_OCTET_STREAM)
+			request.setEntity(reqEntity);
+
+			// Execute the REST API call and get the response entity.
+			var response: HttpResponse = httpclient.execute(request);
+			var entity: HttpEntity = response.getEntity();
+
+			if (entity != null) {
+				// Retrieve the face detection details
+				var jsonString: String = EntityUtils.toString(entity).trim();
+				var jsonArray: JSONArray = new JSONArray(jsonString);
+				var allFaces : Array[(Int, Int, Int, Int)] = Array.empty[(Int, Int, Int, Int)] 
+				for (x <- 0 to (jsonArray.length - 1)){
+					var top : Int = jsonArray.getJSONObject(x).getJSONObject("faceRectangle").getInt("top")
+					var left : Int = jsonArray.getJSONObject(x).getJSONObject("faceRectangle").getInt("left")
+					var width : Int = jsonArray.getJSONObject(x).getJSONObject("faceRectangle").getInt("width")
+					var height : Int = jsonArray.getJSONObject(x).getJSONObject("faceRectangle").getInt("height")
+					var faceRect : (Int, Int, Int, Int) = (top, left, width, height)
+					allFaces = allFaces :+ faceRect
+				}
+				return allFaces;
+			}
+			return null;
+		} catch {
+			case exception: Exception => {
+				// Display error message.
+				println(exception.getMessage);
+				return null
+			}
+		}
 	}
-  
-
-  class PanelDemo extends JLayeredPane {
-  	setPreferredSize(new Dimension(500, 500))
-  	val picLink : String = "Pics/test.png"
-  	var panel1 : PicPanel = new PicPanel(picLink)
-  	var panel2 : DetectedFacesPanel = new DetectedFacesPanel(picLink)
-  	panel1.setBounds(0, 0, 500, 500)
-  	panel2.setBounds(0, 0, 500, 500)
-	add(panel1, new Integer(1))
-	add(panel2, new Integer(2))
-
-  }
-
-  class FaceDetectionClass(val picLink : String){
-    
-    def faceDetect : String = {
-
-    import java.net.URI
-    import org.apache.http.HttpEntity
-    import org.apache.http.HttpResponse
-    import org.apache.http.client.HttpClient
-    import org.apache.http.client.methods.HttpPost
-    import org.apache.http.entity.StringEntity
-    import org.apache.http.impl.client.DefaultHttpClient
-    import org.apache.http.client.utils.URIBuilder
-    import org.apache.http.util.EntityUtils
-    import org.json.JSONArray
-    import org.json.JSONObject
-    // **********************************************
-    // *** Update or verify the following values. ***
-    // **********************************************
-
-    // Replace the subscriptionKey string value with your valid subscription key.
-    val subscriptionKey: String = "f46eacf7b3e241f792ae9111d2ca95c7";
-
-    // Replace or verify the region.
-    //
-    // You must use the same region in your REST API call as you used to obtain your subscription keys.
-    // For example, if you obtained your subscription keys from the westus region, replace
-    // "westcentralus" in the URI below with "westus".
-    //
-    // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
-    // a free trial subscription key, you should not need to change this region.
-    val uriBase: String = "https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect";
-
-    val httpclient: HttpClient = new DefaultHttpClient;
-    try {
-      var builder: URIBuilder = new URIBuilder(uriBase);
-
-      // Request parameters. All of them are optional.
-      builder.setParameter("returnFaceId", "true");
-      //builder.setParameter("returnFaceLandmarks", "false");
-      //builder.setParameter("returnFaceAttributes", "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise");
-
-      // Prepare the URI for the REST API call.
-      var uri: URI = builder.build();
-      var request: HttpPost = new HttpPost(uri);
-
-      // Request headers.
-      request.setHeader("Content-Type", "application/json");
-      request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-      // Request body.
-      val reqEntity = new StringEntity("{\"url\":\"" + picLink + "\"}");
-      request.setEntity(reqEntity);
-
-      // Execute the REST API call and get the response entity.
-      var response: HttpResponse = httpclient.execute(request);
-      var entity: HttpEntity = response.getEntity();
-
-      if (entity != null) {
-        // Format and display the JSON response.
-
-        var response: String = "REST Response:\n";
-        var jsonString: String = EntityUtils.toString(entity).trim();
-
-        if (jsonString.charAt(0) == '[') {
-          var jsonArray: JSONArray = new JSONArray(jsonString);
-          return response + jsonArray.toString(2);
-        } else if (jsonString.charAt(0) == '{') {
-          var jsonObject: JSONObject = new JSONObject(jsonString);
-          return response + jsonObject.toString(2);
-        } else {
-          return response + jsonString;
-        }
-      }
-      return "Null entity";
-    } catch {
-      case exception: Exception => {
-        // Display error message.
-        return exception.getMessage;
-      }
-    }
-  }
 }
