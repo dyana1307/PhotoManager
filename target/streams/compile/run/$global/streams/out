@@ -9,20 +9,6 @@
 [0m[[0mdebug[0m] [0m	C:\Users\Dyana\.ivy2\cache\commons-codec\commons-codec\jars\commons-codec-1.9.jar[0m
 [0m[[0mdebug[0m] [0m	C:\Users\Dyana\.ivy2\cache\org.json\json\bundles\json-20170516.jar[0m
 [0m[[0mdebug[0m] [0m	C:\Users\Dyana\.ivy2\cache\org.scala-lang\scala-swing\jars\scala-swing-2.10.6.jar[0m
-[0m[[0mdebug[0m] [0mWaiting for thread run-main-3 to terminate.[0m
-[0m[[0mdebug[0m] [0m	Thread run-main-3 exited.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main-4 to terminate.[0m
+[0m[[0mdebug[0m] [0m	Thread run-main-4 exited.[0m
 [0m[[0mdebug[0m] [0mWaiting for thread AWT-EventQueue-0 to terminate.[0m
-[0m[[0mdebug[0m] [0mDisposing 5 top-level windows...[0m
-[0m[[0mdebug[0m] [0mWaiting 2 s to let AWT thread exit.[0m
-[0m[[0mdebug[0m] [0mInterrupting thread AWT-EventQueue-0[0m
-[0m[[0mdebug[0m] [0m	Interrupted AWT-EventQueue-0[0m
-[0m[[0mdebug[0m] [0mInterrupting thread Image Fetcher 0[0m
-[0m[[0mdebug[0m] [0m	Interrupted Image Fetcher 0[0m
-[0m[[0mdebug[0m] [0m	Thread AWT-EventQueue-0 exited.[0m
-[0m[[0mdebug[0m] [0mWaiting for thread AWT-EventQueue-0 to terminate.[0m
-[0m[[0mdebug[0m] [0m	Thread AWT-EventQueue-0 exited.[0m
-[0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m
-[0m[[0mdebug[0m] [0mDisposing 5 top-level windows...[0m
-[0m[[0mdebug[0m] [0mWaiting 2 s to let AWT thread exit.[0m
-[0m[[0mdebug[0m] [0mSandboxed run complete..[0m
-[0m[[0mdebug[0m] [0mExited with code 0[0m
