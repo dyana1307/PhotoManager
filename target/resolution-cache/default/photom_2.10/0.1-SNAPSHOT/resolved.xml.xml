@@ -4,7 +4,7 @@
 		module="photom_2.10"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170801155125"
+		publication="20170808164624"
 	>
 		<description>
 		photom
@@ -37,5 +37,17 @@
 		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.5.3" conf="compile->default(compile)"/>
 		<dependency org="org.json" name="json" rev="20170516" conf="compile->default(compile)"/>
 		<dependency org="org.scala-lang" name="scala-swing" rev="2.10.6" conf="compile->default(compile)"/>
+		<dependency org="org.bytedeco" name="javacv" rev="0.9" conf="compile->default(compile)">
+			<exclude org="org.bytedeco.javacpp-presets" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
+			<exclude org="org.bytedeco.javacpp" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
+		</dependency>
+		<dependency org="org.bytedeco.javacpp-presets" name="opencv" rev="2.4.9-0.9" conf="compile->default(compile)">
+			<artifact name="opencv" type="jar" ext="jar" conf="compile" e:classifier=""/>
+			<artifact name="opencv" type="jar" ext="jar" conf="compile" e:classifier="windows-x86_64"/>
+		</dependency>
+		<dependency org="org.bytedeco" name="javacpp" rev="0.9" conf="compile->default(compile)"/>
+		<dependency org="net.imagej" name="ij" rev="1.47v" conf="compile->default(compile)"/>
+		<dependency org="junit" name="junit" rev="4.11" conf="test->default(compile)"/>
+		<dependency org="com.novocode" name="junit-interface" rev="0.10" conf="test->default(compile)"/>
 	</dependencies>
 </ivy-module>

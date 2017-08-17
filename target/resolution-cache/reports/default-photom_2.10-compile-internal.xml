@@ -7,8 +7,61 @@
 		revision="0.1-SNAPSHOT"
 		conf="compile-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20170801155125"/>
+		date="20170808164624"/>
 	<dependencies>
+		<module organisation="net.imagej" name="ij">
+			<revision name="1.47v" status="release" pubdate="20130708193911" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://imagej.nih.gov/ij/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="10">
+				<license name="Public domain" url="http://rsb.info.nih.gov/ij/disclaimer.html"/>
+				<metadata-artifact status="no" details="" size="4870" time="0" location="C:\Users\Dyana\.ivy2\cache\net.imagej\ij\ivy-1.47v.xml" searched="false" origin-is-local="false" origin-location="http://maven.imagej.net/content/repositories/releases/net/imagej/ij/1.47v/ij-1.47v.pom"/>
+				<caller organisation="default" name="photom_2.10" conf="compile-internal, compile, provided, optional" rev="1.47v" rev-constraint-default="1.47v" rev-constraint-dynamic="1.47v" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="ij" type="jar" ext="jar" status="no" details="" size="1817961" time="0" location="C:\Users\Dyana\.ivy2\cache\net.imagej\ij\jars\ij-1.47v.jar">
+						<origin-location is-local="false" location="http://maven.imagej.net/content/repositories/releases/net/imagej/ij/1.47v/ij-1.47v.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.bytedeco" name="javacv">
+			<revision name="0.9" status="release" pubdate="20140727194635" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://bytedeco.org/javacv/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="7">
+				<license name="GPLv2 with Classpath exception" url="http://www.gnu.org/software/classpath/license.html"/>
+				<metadata-artifact status="no" details="" size="5690" time="0" location="C:\Users\Dyana\.ivy2\cache\org.bytedeco\javacv\ivy-0.9.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/bytedeco/javacv/0.9/javacv-0.9.pom"/>
+				<caller organisation="default" name="photom_2.10" conf="compile-internal, compile, provided, optional" rev="0.9" rev-constraint-default="0.9" rev-constraint-dynamic="0.9" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="javacv" type="jar" ext="jar" status="no" details="" size="327816" time="0" location="C:\Users\Dyana\.ivy2\cache\org.bytedeco\javacv\jars\javacv-0.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/bytedeco/javacv/0.9/javacv-0.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.bytedeco.javacpp-presets" name="opencv">
+			<revision name="2.4.9-0.9" status="release" pubdate="20140727184421" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="9">
+				<license name="GPLv2 with Classpath exception" url="http://www.gnu.org/software/classpath/license.html"/>
+				<metadata-artifact status="no" details="" size="3536" time="0" location="C:\Users\Dyana\.ivy2\cache\org.bytedeco.javacpp-presets\opencv\ivy-2.4.9-0.9.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/bytedeco/javacpp-presets/opencv/2.4.9-0.9/opencv-2.4.9-0.9.pom"/>
+				<caller organisation="default" name="photom_2.10" conf="compile-internal, compile, provided, optional" rev="2.4.9-0.9" rev-constraint-default="2.4.9-0.9" rev-constraint-dynamic="2.4.9-0.9" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="opencv" type="jar" ext="jar" extra-classifier="windows-x86_64" status="no" details="" size="13879965" time="0" location="C:\Users\Dyana\.ivy2\cache\org.bytedeco.javacpp-presets\opencv\jars\opencv-2.4.9-0.9-windows-x86_64.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/bytedeco/javacpp-presets/opencv/2.4.9-0.9/opencv-2.4.9-0.9-windows-x86_64.jar"/>
+					</artifact>
+					<artifact name="opencv" type="jar" ext="jar" extra-classifier="" status="no" details="" size="801246" time="0" location="C:\Users\Dyana\.ivy2\cache\org.bytedeco.javacpp-presets\opencv\jars\opencv-2.4.9-0.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/bytedeco/javacpp-presets/opencv/2.4.9-0.9/opencv-2.4.9-0.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.bytedeco" name="javacpp">
+			<revision name="0.9" status="release" pubdate="20140727133335" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://bytedeco.org/javacpp/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="8">
+				<license name="GPLv2 with Classpath exception" url="http://www.gnu.org/software/classpath/license.html"/>
+				<metadata-artifact status="no" details="" size="3360" time="0" location="C:\Users\Dyana\.ivy2\cache\org.bytedeco\javacpp\ivy-0.9.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/bytedeco/javacpp/0.9/javacpp-0.9.pom"/>
+				<caller organisation="default" name="photom_2.10" conf="compile-internal, compile, provided, optional" rev="0.9" rev-constraint-default="0.9" rev-constraint-dynamic="0.9" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="org.bytedeco" name="javacv" conf="default, compile, runtime, master" rev="0.9" rev-constraint-default="0.9" rev-constraint-dynamic="0.9" callerrev="0.9"/>
+				<caller organisation="org.bytedeco.javacpp-presets" name="opencv" conf="default, compile, runtime, master" rev="0.9" rev-constraint-default="0.9" rev-constraint-dynamic="0.9" callerrev="2.4.9-0.9"/>
+				<artifacts>
+					<artifact name="javacpp" type="maven-plugin" ext="jar" status="no" details="" size="188598" time="0" location="C:\Users\Dyana\.ivy2\cache\org.bytedeco\javacpp\maven-plugins\javacpp-0.9.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/bytedeco/javacpp/0.9/javacpp-0.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
 		<module organisation="org.scala-lang" name="scala-swing">
 			<revision name="2.10.6" status="release" pubdate="20150918103552" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.10.6/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="6">
 				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>

@@ -11,21 +11,22 @@ import javax.swing._
 import java.awt._
 import java.io.File
 
+import java.net.URI
+import org.apache.http.HttpEntity
+import org.apache.http.HttpResponse
+import org.apache.http.client.HttpClient
+import org.apache.http.client.methods.HttpPost
+import org.apache.http.entity.{ByteArrayEntity, ContentType}
+import org.apache.http.impl.client.DefaultHttpClient
+import org.apache.http.client.utils.URIBuilder
+import org.apache.http.util.EntityUtils
+import org.json.JSONArray
+import org.json.JSONObject
+
 object FaceDetection{
 
 	def faceDetect(picLink : String) : Array[(Int, Int, Int, Int)] = {
 
-		import java.net.URI
-		import org.apache.http.HttpEntity
-		import org.apache.http.HttpResponse
-		import org.apache.http.client.HttpClient
-		import org.apache.http.client.methods.HttpPost
-		import org.apache.http.entity.{ByteArrayEntity, ContentType}
-		import org.apache.http.impl.client.DefaultHttpClient
-		import org.apache.http.client.utils.URIBuilder
-		import org.apache.http.util.EntityUtils
-		import org.json.JSONArray
-		import org.json.JSONObject
 		// **********************************************
 		// *** Update or verify the following values. ***
 		// **********************************************
@@ -75,11 +76,11 @@ object FaceDetection{
 				var jsonString: String = EntityUtils.toString(entity).trim();
 				var jsonArray: JSONArray = new JSONArray(jsonString);
 				var allFaces : Array[(Int, Int, Int, Int)] = Array.empty[(Int, Int, Int, Int)] 
-				for (x <- 0 to (jsonArray.length - 1)){
-					var top : Int = jsonArray.getJSONObject(x).getJSONObject("faceRectangle").getInt("top")
-					var left : Int = jsonArray.getJSONObject(x).getJSONObject("faceRectangle").getInt("left")
-					var width : Int = jsonArray.getJSONObject(x).getJSONObject("faceRectangle").getInt("width")
-					var height : Int = jsonArray.getJSONObject(x).getJSONObject("faceRectangle").getInt("height")
+				for (i <- 0 to (jsonArray.length - 1)){
+					var top : Int = jsonArray.getJSONObject(i).getJSONObject("faceRectangle").getInt("top")
+					var left : Int = jsonArray.getJSONObject(i).getJSONObject("faceRectangle").getInt("left")
+					var width : Int = jsonArray.getJSONObject(i).getJSONObject("faceRectangle").getInt("width")
+					var height : Int = jsonArray.getJSONObject(i).getJSONObject("faceRectangle").getInt("height")
 					var faceRect : (Int, Int, Int, Int) = (top, left, width, height)
 					allFaces = allFaces :+ faceRect
 				}
