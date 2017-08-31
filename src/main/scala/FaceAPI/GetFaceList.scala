@@ -13,7 +13,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 object GetFaceList {
-	def getFaceList(listId : String) : String = {
+	def getFaceList(listId : String) : Array[(String,String)] = {
 	// **********************************************
 	// *** Update or verify the following values. ***
 	// **********************************************
@@ -50,8 +50,25 @@ object GetFaceList {
 
 			if (entity != null) {
 				val entityString : String = EntityUtils.toString(entity)
-				println(EntityUtils.toString(entity));
-				return EntityUtils.toString(entity)
+				val jsonObject : JSONObject = new JSONObject(entityString)
+				var listsDetails : Array[(String, String)] = Array.empty[(String, String)]
+				if(jsonObject.has("persistedFaces")){
+
+					for(i <- 0 to (jsonObject.getJSONArray("persistedFaces").length() - 1)){
+						var id : String = jsonObject.getJSONArray("persistedFaces").getJSONObject(i).getString("persistedFaceId")
+						var userData = jsonObject.getJSONArray("persistedFaces").getJSONObject(i).get("userData")
+
+						var userDataString : String = userData + ""
+
+						if(userDataString == "null"){
+							userDataString = "No user data"
+						}
+
+						var listDetails : (String, String) = (id, userDataString)
+						listsDetails = listsDetails :+ listDetails
+					}
+				}
+				return listsDetails
 			}
 			return null
 		} catch {
@@ -61,5 +78,17 @@ object GetFaceList {
                 return null
             }
         }
+	}
+
+	def getFaceListFaceIds(listId : String) : Array[String] = {
+		val listDetails : Array[(String, String)] = getFaceList(listId)
+		var listIds : Array[String] = Array.empty[String]
+
+		for(list <- listDetails){
+			listIds = listIds :+ list._1
+		}
+
+		return listIds
+
 	}
 }

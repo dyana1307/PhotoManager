@@ -60,12 +60,18 @@ object ListFaceLists {
 					var id : String = jsonArray.getJSONObject(i).getString("faceListId")
 					var name : String = jsonArray.getJSONObject(i).getString("name")
 					var userData = jsonArray.getJSONObject(i).get("userData")
-					var listInfo : (String, String, String) = (id, name, userData + "")
+					var userDataString : String = userData + ""
+
+					if(userDataString == "null"){
+						userDataString = "No user data"
+					}
+
+					var listInfo : (String, String, String) = (id, name, userDataString)
 					listOfLists = listOfLists :+ listInfo
 				}
 
 				return listOfLists
-			}
+				}
 			return null
 		} catch {
             case exception: Exception => {
@@ -74,5 +80,17 @@ object ListFaceLists {
                 return null
             }
         }
+	}
+
+	def getListOfIds : Array[String] = {
+		val faceLists : Array[(String, String, String)] = listFaceLists
+
+		var listOfIds : Array[String] = Array.empty[String]
+
+		for(list <- faceLists){
+			listOfIds = listOfIds :+ list._1
+		}
+
+		return listOfIds
 	}
 }

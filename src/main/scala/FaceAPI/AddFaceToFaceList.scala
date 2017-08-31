@@ -60,7 +60,15 @@ object AddFaceToFaceList {
 
 			if (entity != null) {
 				val entityString : String = EntityUtils.toString(entity)
-				println(EntityUtils.toString(entity));
+				val jsonObject : JSONObject = new JSONObject(entityString)
+
+				if(jsonObject.has("persistedFaceId")){
+					return "The ID of the added face is: " + jsonObject.get("persistedFaceId") + "."
+				}
+				else{
+					return jsonObject.getJSONObject("error").get("message").toString()
+				}
+				
 			}
 			return null
 		} catch {

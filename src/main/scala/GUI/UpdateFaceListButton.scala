@@ -5,9 +5,9 @@ import javax.swing._
 import java.awt._
 import java.io.File
 import main.scala.Resources.Resources
-import main.scala.FaceAPI.UpdateFaceList
+import main.scala.FaceAPI._
 
-class UpdateFaceListButton extends JButton{
+class UpdateFaceListButton(listPanel : ListFaceListsPanel) extends JButton{
 	setText("Update Face List")
 	addActionListener(new ActionListener(){
 
@@ -18,7 +18,10 @@ class UpdateFaceListButton extends JButton{
 			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS))
 			panel.setPreferredSize(new Dimension(300, 100))
 
-			val listIdField : JTextField = new JTextField(20)
+
+			val listOfIds : Array[String] = ListFaceLists.getListOfIds
+			val idsBox : JComboBox[String] = new JComboBox(listOfIds)
+
 			val listNameField : JTextField = new JTextField(20)
 			val listUserDataField : JTextField = new JTextField(20)
 
@@ -28,7 +31,7 @@ class UpdateFaceListButton extends JButton{
 			val listIdLabel : JLabel = new JLabel("List ID: ")
 			listIdLabel.setHorizontalAlignment(SwingConstants.CENTER)
 			textFieldsPanel.add(listIdLabel)
-			textFieldsPanel.add(listIdField)
+			textFieldsPanel.add(idsBox)
 
 			val listNameLabel : JLabel = new JLabel("List Name: ")
 			listNameLabel.setHorizontalAlignment(SwingConstants.CENTER)
@@ -46,7 +49,11 @@ class UpdateFaceListButton extends JButton{
 
 			if(result == JOptionPane.OK_OPTION){
 
-				JOptionPane.showMessageDialog(frame, UpdateFaceList.updateFaceList(listIdField.getText(), listNameField.getText(), listUserDataField.getText()));
+				JOptionPane.showMessageDialog(frame, UpdateFaceList.updateFaceList(idsBox.getSelectedItem().asInstanceOf[String], listNameField.getText(), listUserDataField.getText()));
+				listPanel.remove(listPanel.getLayout().asInstanceOf[BorderLayout].getLayoutComponent(BorderLayout.CENTER))
+				listPanel.add(listPanel.getFaceListsList, BorderLayout.CENTER)
+				listPanel.repaint()
+				listPanel.revalidate()
 			}
 		}
 	})

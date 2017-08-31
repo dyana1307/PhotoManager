@@ -1,6 +1,11 @@
 trapExit := false
 fork := true
 
+mainClass in Compile := Some("main.scala.GUI.MainMenu")
+mainClass in assembly := Some("main.scala.GUI.MainMenu")
+
+assemblyJarName in assembly := "FaceRecognition.jar"
+
 // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
 libraryDependencies += "org.apache.httpcomponents" % "httpclient" % "4.5.3"
 

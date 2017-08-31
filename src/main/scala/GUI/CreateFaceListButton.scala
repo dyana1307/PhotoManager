@@ -7,7 +7,7 @@ import java.io.File
 import main.scala.Resources.Resources
 import main.scala.FaceAPI.CreateFaceList
 
-class CreateFaceListButton extends JButton{
+class CreateFaceListButton(listPanel : ListFaceListsPanel) extends JButton{
 	setText("Create Face List")
 	addActionListener(new ActionListener(){
 
@@ -45,10 +45,12 @@ class CreateFaceListButton extends JButton{
 			val result : Int = JOptionPane.showConfirmDialog(null, panel, "Create new face list", JOptionPane.OK_CANCEL_OPTION)
 
 			if(result == JOptionPane.OK_OPTION){
-				println(listIdField.getText())
-				println(listNameField.getText())
-				println(listUserDataField.getText())
 				JOptionPane.showMessageDialog(frame, CreateFaceList.createFaceList(listIdField.getText(), listNameField.getText(), listUserDataField.getText()));
+				listPanel.remove(listPanel.getLayout().asInstanceOf[BorderLayout].getLayoutComponent(BorderLayout.CENTER))
+				listPanel.add(listPanel.getFaceListsList, BorderLayout.CENTER)
+				listPanel.repaint()
+				listPanel.revalidate()
+
 			}
 		}
 	})

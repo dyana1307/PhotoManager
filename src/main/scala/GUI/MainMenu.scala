@@ -9,6 +9,7 @@ import main.scala.Resources.Resources
 object MainMenu{
 	def main(args: Array[String]) : Unit = {
 
+		println(Iterator.iterate(0)(_+1))
 		try {
     		for ((info : LookAndFeelInfo) <- UIManager.getInstalledLookAndFeels()) {
         		if ("Nimbus".equals(info.getName())) {
@@ -47,10 +48,7 @@ class ButtonPanel extends JPanel{
 	label.setHorizontalAlignment(SwingConstants.CENTER)
 	add(label)
 	add(new BrowseButton)
-	add(new CreateFaceListButton())
-	add(new DeleteFaceListButton())
-	add(new UpdateFaceListButton())
-	add(new ListFaceListsButton())
+	add(new FaceListsPanelButton())
 	add(new JButton("Options"))
 	add(new ExitButton)
 }

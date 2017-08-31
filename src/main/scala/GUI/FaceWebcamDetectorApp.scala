@@ -42,7 +42,7 @@ object FaceWebcamDetectorApp extends App{
   }
 
   val canvas = new CanvasFrame("Webcam")
-  canvas.setCanvasSize(640,640)
+  canvas.setCanvasSize(640,480)
 
   val faceDetector = new FaceDetector
   //  //Set Canvas frame to close on exit
@@ -51,7 +51,7 @@ object FaceWebcamDetectorApp extends App{
   //Declare FrameGrabber to import output from webcam
   val grabber = new OpenCVFrameGrabber(0)
   grabber.setImageWidth(640)
-  grabber.setImageHeight(640)
+  grabber.setImageHeight(480)
   grabber.setBitsPerPixel(CV_8U)
   grabber.setImageMode(ImageMode.COLOR)
   grabber.start()
@@ -63,8 +63,8 @@ object FaceWebcamDetectorApp extends App{
   cvFont.vscale(0.6f)
   cvFont.font_face(FONT_HERSHEY_SIMPLEX)
 
-  val mat = new Mat(640, 640, CV_8UC3)
-  val greyMat = new Mat(640, 640, CV_8U)
+  val mat = new Mat(640, 480, CV_8UC3)
+  val greyMat = new Mat(640, 480, CV_8U)
   var faces: Seq[Face] = Nil
   var i : Int = 1
   while (true) {
@@ -90,7 +90,7 @@ object FaceWebcamDetectorApp extends App{
       lastSaveTime = System.currentTimeMillis()
     }
 
-    // draw the face rectangles with the eyes and caption
+    // draw the face rectangles with the caption
     for(f <- faces) {
       // draw the face rectangle
       cvRectangle(img,
