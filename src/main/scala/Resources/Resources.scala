@@ -3,6 +3,7 @@ package main.scala.Resources
 import java.io.File
 import java.awt._
 import javax.swing._
+import main.scala.GUI.FaceWebcamDetectorApp
 
 object Resources{
 
@@ -43,5 +44,9 @@ object Resources{
 		filePaths = filePaths :+ newFile
 		return filePaths
 	}
+
+	var stopWebcam : Boolean = false
+
+	val webcamApp : FaceWebcamDetectorApp = new FaceWebcamDetectorApp()
 
 }

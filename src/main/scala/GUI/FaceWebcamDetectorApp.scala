@@ -8,15 +8,20 @@ import org.bytedeco.javacv.FrameGrabber.ImageMode
 import org.bytedeco.javacv.{OpenCVFrameGrabber, CanvasFrame}
 import org.bytedeco.javacpp.opencv_highgui
 import scala.collection.mutable
+import util.control.Breaks._
 import java.io.File
+import java.awt._
 import javax.swing._
+import main.scala.Resources.Resources
 
 /**
  * Created by chimpler on 7/13/14.
  */
-object FaceWebcamDetectorApp extends App{
+class FaceWebcamDetectorApp{
 
-  // holder for a single detected face: contains face rectangle and the two eye rectangles inside
+  var isStopped : Boolean = false
+
+  // holder for a single detected face: contains face rectangle`
   case class Face(id: Int, faceRect: Rect)
 
   // we need to clone the rect because openCV is recycling rectangles created by the detectMultiScale method
@@ -26,7 +31,8 @@ object FaceWebcamDetectorApp extends App{
 
   class FaceDetector() {
     // read the haar classifier xml files for face, left eye and right eye
-    val faceXml = FaceWebcamDetectorApp.getClass.getClassLoader.getResource("haarcascade_frontalface_default.xml").getPath
+    val faceXmlPath : File = new File("target/scala-2.10/classes/haarcascade_frontalface_default.xml")
+    val faceXml = faceXmlPath.getAbsolutePath()
     val windowsPath : String = faceXml.replace("/", "\\\\").substring(2, faceXml.length + "/".r.findAllMatchIn(faceXml).length)
     val faceCascade = new CascadeClassifier(windowsPath)
     println("Is empty: " + faceCascade.empty())
@@ -41,69 +47,81 @@ object FaceWebcamDetectorApp extends App{
     }
   }
 
-  val canvas = new CanvasFrame("Webcam")
-  canvas.setCanvasSize(640,480)
+  def start{
+    val canvas = new CanvasFrame("Webcam")
+    canvas.setCanvasSize(840,480)
+    
 
-  val faceDetector = new FaceDetector
-  //  //Set Canvas frame to close on exit
-  canvas.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
+    val faceDetector = new FaceDetector
+    //  //Set Canvas frame to close on exit
+    canvas.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
 
-  //Declare FrameGrabber to import output from webcam
-  val grabber = new OpenCVFrameGrabber(0)
-  grabber.setImageWidth(640)
-  grabber.setImageHeight(480)
-  grabber.setBitsPerPixel(CV_8U)
-  grabber.setImageMode(ImageMode.COLOR)
-  grabber.start()
+    //Declare FrameGrabber to import output from webcam
+    val grabber = new OpenCVFrameGrabber(0)
+    grabber.setImageWidth(640)
+    grabber.setImageHeight(480)
+    grabber.setBitsPerPixel(CV_8U)
+    grabber.setImageMode(ImageMode.COLOR)
+    grabber.start()
 
-  var lastRecognitionTime = 0L
-  var lastSaveTime = 0L
-  val cvFont = new CvFont()
-  cvFont.hscale(0.6f)
-  cvFont.vscale(0.6f)
-  cvFont.font_face(FONT_HERSHEY_SIMPLEX)
+    var lastRecognitionTime = 0L
+    var lastSaveTime = 0L
+    val cvFont = new CvFont()
+    cvFont.hscale(0.6f)
+    cvFont.vscale(0.6f)
+    cvFont.font_face(FONT_HERSHEY_SIMPLEX)
 
-  val mat = new Mat(640, 480, CV_8UC3)
-  val greyMat = new Mat(640, 480, CV_8U)
-  var faces: Seq[Face] = Nil
-  var i : Int = 1
-  while (true) {
-    val img = grabber.grab()
-    cvFlip(img, img, 1)
+    val mat = new Mat(640, 480, CV_8UC3)
+    val greyMat = new Mat(640, 480, CV_8U)
+    var faces: Seq[Face] = Nil
+    var i : Int = 1
 
-    // run the recognition every 200ms to not use too much CPU
-    if (System.currentTimeMillis() - lastRecognitionTime > 200) {
-      mat.copyFrom(img.getBufferedImage)
-      opencv_imgproc.cvtColor(mat, greyMat, opencv_imgproc.CV_BGR2GRAY, 1)
-      opencv_imgproc.equalizeHist(greyMat, greyMat)
-      faces = faceDetector.detect(greyMat)
-      lastRecognitionTime = System.currentTimeMillis()
+    breakable {
+      while (true) {
 
+       if(isStopped) break
+       val img = grabber.grab()
+       cvFlip(img, img, 1)
+
+        // run the recognition every 200ms to not use too much CPU
+        if (System.currentTimeMillis() - lastRecognitionTime > 200) {
+          mat.copyFrom(img.getBufferedImage)
+          opencv_imgproc.cvtColor(mat, greyMat, opencv_imgproc.CV_BGR2GRAY, 1)
+          opencv_imgproc.equalizeHist(greyMat, greyMat)
+          faces = faceDetector.detect(greyMat)
+          lastRecognitionTime = System.currentTimeMillis()
+
+        }
+
+        if(System.currentTimeMillis() - lastSaveTime > 1000 && !faces.isEmpty){
+          mat.copyFrom(img.getBufferedImage)
+          opencv_imgproc.cvtColor(mat, greyMat, opencv_imgproc.CV_BGR2GRAY, 1)
+          opencv_imgproc.equalizeHist(greyMat, greyMat)
+          opencv_highgui.imwrite("Pics\\" + i + ".jpg", mat)
+          i += 1
+          lastSaveTime = System.currentTimeMillis()
+        }
+
+        // draw the face rectangles with the caption
+        for(f <- faces) {
+          // draw the face rectangle
+          cvRectangle(img,
+            opencv_core.cvPoint(f.faceRect.x, f.faceRect.y),
+            opencv_core.cvPoint(f.faceRect.x + f.faceRect.width, f.faceRect.y + f.faceRect.height), AbstractCvScalar.RED, 1, CV_AA, 0)
+
+         // draw the face number
+         val cvPoint = opencv_core.cvPoint(f.faceRect.x, f.faceRect.y - 20)
+          cvPutText(img, s"Face ${f.id}", cvPoint, cvFont, AbstractCvScalar.RED)
+        }
+        canvas.showImage(img)
+        canvas.add(new RecognitionPanel, BorderLayout.PAGE_END)
+      }
     }
-
-    if(System.currentTimeMillis() - lastSaveTime > 1000 && !faces.isEmpty){
-      mat.copyFrom(img.getBufferedImage)
-      opencv_imgproc.cvtColor(mat, greyMat, opencv_imgproc.CV_BGR2GRAY, 1)
-      opencv_imgproc.equalizeHist(greyMat, greyMat)
-      opencv_highgui.imwrite("Pics\\" + i + ".jpg", mat)
-      i += 1
-      lastSaveTime = System.currentTimeMillis()
-    }
-
-    // draw the face rectangles with the caption
-    for(f <- faces) {
-      // draw the face rectangle
-      cvRectangle(img,
-        opencv_core.cvPoint(f.faceRect.x, f.faceRect.y),
-        opencv_core.cvPoint(f.faceRect.x + f.faceRect.width, f.faceRect.y + f.faceRect.height),
-        AbstractCvScalar.RED,
-        1, CV_AA, 0)
-
-      // draw the face number
-      val cvPoint = opencv_core.cvPoint(f.faceRect.x, f.faceRect.y - 20)
-      cvPutText(img, s"Face ${f.id}", cvPoint, cvFont, AbstractCvScalar.RED)
-    }
-    canvas.showImage(img)
   }
+
+  def stop(){
+    isStopped = true
+  }
+  
 
 }

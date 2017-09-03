@@ -74,6 +74,7 @@ object FaceDetection{
 			if (entity != null) {
 				// Retrieve the face detection details
 				var jsonString: String = EntityUtils.toString(entity).trim();
+				println(jsonString)
 				var jsonArray: JSONArray = new JSONArray(jsonString);
 				var allFaces : Array[(Int, Int, Int, Int)] = Array.empty[(Int, Int, Int, Int)] 
 				for (i <- 0 to (jsonArray.length - 1)){

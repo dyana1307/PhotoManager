@@ -97,10 +97,6 @@ run
 compile
 run
 compile
-run
-compile
-run
-compile
 run1
 run
 run1
@@ -498,3 +494,7 @@ run
 package
 exit
 assembly
+run
+copile
+compile
+run

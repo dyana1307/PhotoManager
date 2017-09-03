@@ -71,10 +71,11 @@ class ListFaceListsPanel extends JPanel{
 
 	def getFaceListsButtonsPanel : JPanel = {
 		var panel : JPanel = new JPanel
-		var glayout : GridLayout = new GridLayout(7, 0)
+		var glayout : GridLayout = new GridLayout(8, 0)
 		panel.setLayout(glayout)
 
 		panel.add(new BackButton)
+		panel.add(new StartWebcamButton)
 		panel.add(new CreateFaceListButton(this))
 		panel.add(new DeleteFaceListButton(this))
 		panel.add(new UpdateFaceListButton(this))

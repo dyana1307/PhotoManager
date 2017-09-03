@@ -1,7 +1,6 @@
 trapExit := false
 fork := true
 
-mainClass in Compile := Some("main.scala.GUI.MainMenu")
 mainClass in assembly := Some("main.scala.GUI.MainMenu")
 
 assemblyJarName in assembly := "FaceRecognition.jar"
