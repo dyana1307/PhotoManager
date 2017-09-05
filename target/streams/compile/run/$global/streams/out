@@ -1,30 +1,23 @@
 [0m[[0mdebug[0m] [0mjavaOptions: List()[0m
 [0m[[0minfo[0m] [0mRunning main.scala.GUI.MainMenu [0m
-[0m[[0minfo[0m] [0mIs empty: false[0m
-java.lang.RuntimeException: Nonzero exit code returned from runner: 1
-	at scala.sys.package$.error(package.scala:27)
-	at sbt.BuildCommon$$anonfun$toError$1.apply(Defaults.scala:2135)
-	at sbt.BuildCommon$$anonfun$toError$1.apply(Defaults.scala:2135)
-	at scala.Option.foreach(Option.scala:236)
-	at sbt.BuildCommon$class.toError(Defaults.scala:2135)
-	at sbt.Defaults$.toError(Defaults.scala:39)
-	at sbt.Defaults$$anonfun$runTask$1$$anonfun$apply$46$$anonfun$apply$47.apply(Defaults.scala:776)
-	at sbt.Defaults$$anonfun$runTask$1$$anonfun$apply$46$$anonfun$apply$47.apply(Defaults.scala:774)
-	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
-	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
-	at sbt.std.Transform$$anon$4.work(System.scala:63)
-	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
-	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
-	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
-	at sbt.Execute.work(Execute.scala:237)
-	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
-	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
-	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
-	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:745)
-[0m[[31merror[0m] [0m(compile:[31mrun[0m) Nonzero exit code returned from runner: 1[0m
+[0m[[0minfo[0m] [0m[{"faceId":"50a58e9b-73a8-49cd-afe7-922a559ab67a","faceRectangle":{"top":157,"left":185,"width":294,"height":311}}][0m
+[0m[[0minfo[0m] [0m[][0m
+[0m[[0minfo[0m] [0m[{"faceId":"26542543-b63a-48d5-a40f-0475e9e5c10d","faceRectangle":{"top":169,"left":182,"width":297,"height":308}}][0m
+[0m[[0minfo[0m] [0m[][0m
+[0m[[0minfo[0m] [0m[{"faceId":"bf9e3dd7-f267-4793-8f7b-69a2ebff49ad","faceRectangle":{"top":150,"left":152,"width":318,"height":318}}][0m
+[0m[[0minfo[0m] [0m[][0m
+[0m[[0minfo[0m] [0m[{"faceId":"b307846d-51a9-4ee3-881d-16888c18df4f","faceRectangle":{"top":161,"left":165,"width":313,"height":313}}][0m
+[0m[[0minfo[0m] [0m[][0m
+[0m[[0minfo[0m] [0m[{"faceId":"6e90ca40-6fb7-4934-ae0c-ae77d0f97597","faceRectangle":{"top":152,"left":193,"width":286,"height":295}}][0m
+[0m[[0minfo[0m] [0m[{"persistedFaceId":"50fb67d4-165c-4f0c-bb3f-f05ce750eeb2","confidence":0.605781436}][0m
+[0m[[0minfo[0m] [0m[{"faceId":"4e5f578d-8cca-4ebe-86e5-111c7d5cddbb","faceRectangle":{"top":171,"left":175,"width":304,"height":309}}][0m
+[0m[[0minfo[0m] [0m[{"persistedFaceId":"50fb67d4-165c-4f0c-bb3f-f05ce750eeb2","confidence":0.6443421}][0m
+[0m[[0minfo[0m] [0m[{"faceId":"ab0ce510-f243-4864-8c12-7c16fe9d2c42","faceRectangle":{"top":165,"left":177,"width":302,"height":309}}][0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m					{ "error": { "code": "RateLimitExceeded", "message": "Rate limit is exceeded. Try again later." } }[0m
+[0m[[31merror[0m] [0mException in thread "Thread-4" java.lang.NullPointerException[0m
+[0m[[0minfo[0m] [0m		        	[0m
+[0m[[31merror[0m] [0m	at main.scala.GUI.FeedbackPanel$$anon$1$$anonfun$run$1.apply$mcVI$sp(RecognitionPanel.scala:32)[0m
+[0m[[0minfo[0m] [0mA JSONArray text must start with '[' at 7 [character 6 line 2][0m
+[0m[[31merror[0m] [0m	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:141)[0m
+[0m[[31merror[0m] [0m	at main.scala.GUI.FeedbackPanel$$anon$1.run(RecognitionPanel.scala:30)[0m

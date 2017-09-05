@@ -12,10 +12,8 @@ class StartWebcamButton extends JButton{
 		def actionPerformed(e:ActionEvent){
 			Resources.getCurrentPanel
 			Resources.switchPanel(new RecognitionPanel)
-
-			//Thread.sleep(5000)
-
-			Resources.webcamApp.start
+			Resources.createNewWebcamThread
+			Resources.currentWebcamThread.start
 		}
 	})
 }

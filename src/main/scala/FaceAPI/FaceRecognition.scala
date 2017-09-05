@@ -58,11 +58,15 @@ object FaceRecognition {
 
 				if (entity != null) {
 					val entityString : String = EntityUtils.toString(entity)
+					println(entityString)
 					val jsonArray : JSONArray = new JSONArray(entityString)
-					val recognisedId : String = jsonArray.getJSONObject(0).getString("persistedFaceId")
-					val recognisedConf : Double = jsonArray.getJSONObject(0).getDouble("confidence")
-					val recognisedFace : (String, Double) = (recognisedId, recognisedConf)
-					return recognisedFace
+					if(jsonArray.length() > 0){
+						val recognisedId : String = jsonArray.getJSONObject(0).getString("persistedFaceId")
+						val recognisedConf : Double = jsonArray.getJSONObject(0).getDouble("confidence")
+						val recognisedFace : (String, Double) = (recognisedId, recognisedConf)
+						return recognisedFace
+					}
+					return ("Face not recognised", 0.0)
 
 				}
 				return null

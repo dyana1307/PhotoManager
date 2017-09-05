@@ -93,10 +93,6 @@ run
 compile
 run
 compile
-run
-compile
-run
-compile
 run1
 run
 run1
@@ -497,4 +493,8 @@ assembly
 run
 copile
 compile
+run
+sbt
+run
+run -deprecation
 run

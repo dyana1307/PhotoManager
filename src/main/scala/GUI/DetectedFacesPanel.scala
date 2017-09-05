@@ -1,4 +1,4 @@
-package main.scala.GUI
+/*package main.scala.GUI
 
 
 import main.scala.Resources.Resources
@@ -28,3 +28,4 @@ class DetectedFacesPanel(val picLink : String) extends JPanel{
 	}
 
 }
+*/

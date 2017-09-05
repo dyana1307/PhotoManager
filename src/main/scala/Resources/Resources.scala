@@ -36,7 +36,7 @@ object Resources{
 		previousPanel = mainPanel.getComponent(0).asInstanceOf[JPanel]
 	}
 
-	var selectedFilePath : String = "Pics/test.png"
+	var selectedFaceList : String = "test"
 
 	var filePaths : Array[File] = Array.empty[File]
 
@@ -45,8 +45,18 @@ object Resources{
 		return filePaths
 	}
 
-	var stopWebcam : Boolean = false
+	var webcamHasStopped : Boolean = false
 
 	val webcamApp : FaceWebcamDetectorApp = new FaceWebcamDetectorApp()
 
+	var currentWebcamThread : Thread = new Thread()
+
+	def createNewWebcamThread{
+		val webcamThread : Thread = new Thread {
+		override def run {
+			Resources.webcamApp.start
+			}
+		}
+		currentWebcamThread = webcamThread
+	}
 }

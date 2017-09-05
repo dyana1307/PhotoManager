@@ -91,4 +91,13 @@ object GetFaceList {
 		return listIds
 
 	}
+
+	def getUserData(listId : String, faceId : String) : String = {
+		val listDetails : Array[(String, String)] = getFaceList(listId)
+
+		for(list <- listDetails){
+			if(list._1 == faceId) return list._2
+		}
+		return "Data not found"
+	}
 }

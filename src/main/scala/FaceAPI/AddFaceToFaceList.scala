@@ -17,7 +17,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 object AddFaceToFaceList {
-	def addFaceToFaceList(listId : String, picLink : String) : String = {
+	def addFaceToFaceList(listId : String, userData : String, picLink : String) : String = {
 	// **********************************************
 	// *** Update or verify the following values. ***
 	// **********************************************
@@ -45,7 +45,10 @@ object AddFaceToFaceList {
 		try {
 			val builder : URIBuilder = new URIBuilder(uriBase);
 
+			builder.setParameter("userData", userData);
+
 			val uri : URI = builder.build();
+
 			val request : HttpPost = new HttpPost(uri);
 			request.setHeader("Content-Type", "application/octet-stream");
 			request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);

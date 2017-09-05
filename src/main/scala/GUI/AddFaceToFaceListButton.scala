@@ -26,10 +26,17 @@ class AddFaceToFaceListButton extends JButton{
 				panel.add(new JLabel("Existing face lists: "))
 				panel.add(idsBox)
 
+				val userDataField : JTextField = new JTextField(20)
+				val userDataLabel : JLabel = new JLabel("Student ID: ")
+				userDataLabel.setHorizontalAlignment(SwingConstants.CENTER)
+
+				panel.add(userDataLabel)
+				panel.add(userDataField)
+
 				val result : Int = JOptionPane.showConfirmDialog(null, panel, "Choose a face list", JOptionPane.OK_CANCEL_OPTION)
 
 				if(result == JOptionPane.OK_OPTION){
-					JOptionPane.showMessageDialog(new JFrame, AddFaceToFaceList.addFaceToFaceList(idsBox.getSelectedItem().asInstanceOf[String], fileChooser.getSelectedFile().getPath()));
+					JOptionPane.showMessageDialog(new JFrame, AddFaceToFaceList.addFaceToFaceList(idsBox.getSelectedItem().asInstanceOf[String], userDataField.getText() , fileChooser.getSelectedFile().getPath()));
 				}
 
 			}

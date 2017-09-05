@@ -1,4 +1,4 @@
-package main.scala.GUI
+/*package main.scala.GUI
 
 import java.awt._
 import javax.swing._
@@ -24,3 +24,4 @@ class PhotoPreview extends JPanel{
 	add(layeredPane, BorderLayout.CENTER)
 	add(new BackButton, BorderLayout.SOUTH)
 }
+*/

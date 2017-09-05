@@ -1,4 +1,4 @@
-package main.scala.GUI
+/*package main.scala.GUI
 
 import java.awt.event.{ActionListener, ActionEvent}
 import javax.swing._
@@ -22,3 +22,4 @@ class BrowseButton extends JButton{
 		}
 	})
 }
+*/

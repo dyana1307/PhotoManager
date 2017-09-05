@@ -19,8 +19,6 @@ import main.scala.Resources.Resources
  */
 class FaceWebcamDetectorApp{
 
-  var isStopped : Boolean = false
-
   // holder for a single detected face: contains face rectangle`
   case class Face(id: Int, faceRect: Rect)
 
@@ -35,7 +33,6 @@ class FaceWebcamDetectorApp{
     val faceXml = faceXmlPath.getAbsolutePath()
     val windowsPath : String = faceXml.replace("/", "\\\\").substring(2, faceXml.length + "/".r.findAllMatchIn(faceXml).length)
     val faceCascade = new CascadeClassifier(windowsPath)
-    println("Is empty: " + faceCascade.empty())
 
     def detect(greyMat: Mat): Seq[Face] = {
       val faceRects = new Rect()
@@ -47,7 +44,7 @@ class FaceWebcamDetectorApp{
     }
   }
 
-  def start{
+  def start(){
     val canvas = new CanvasFrame("Webcam")
     canvas.setCanvasSize(840,480)
     
@@ -76,10 +73,8 @@ class FaceWebcamDetectorApp{
     var faces: Seq[Face] = Nil
     var i : Int = 1
 
-    breakable {
-      while (true) {
+      while (!Resources.webcamHasStopped) {
 
-       if(isStopped) break
        val img = grabber.grab()
        cvFlip(img, img, 1)
 
@@ -93,7 +88,7 @@ class FaceWebcamDetectorApp{
 
         }
 
-        if(System.currentTimeMillis() - lastSaveTime > 1000 && !faces.isEmpty){
+        if(System.currentTimeMillis() - lastSaveTime > 3000 && !faces.isEmpty){
           mat.copyFrom(img.getBufferedImage)
           opencv_imgproc.cvtColor(mat, greyMat, opencv_imgproc.CV_BGR2GRAY, 1)
           opencv_imgproc.equalizeHist(greyMat, greyMat)
@@ -114,13 +109,18 @@ class FaceWebcamDetectorApp{
           cvPutText(img, s"Face ${f.id}", cvPoint, cvFont, AbstractCvScalar.RED)
         }
         canvas.showImage(img)
-        canvas.add(new RecognitionPanel, BorderLayout.PAGE_END)
       }
-    }
+
+      if(Resources.webcamHasStopped){
+        canvas.dispose()
+        Resources.currentWebcamThread.interrupt
+        Resources.webcamHasStopped = false
+      }
   }
 
   def stop(){
-    isStopped = true
+    Resources.webcamHasStopped = true
+
   }
   
 

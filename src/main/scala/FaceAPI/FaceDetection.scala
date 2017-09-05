@@ -3,7 +3,6 @@
 
 package main.scala.FaceAPI
 
-import main.scala.GUI.DetectedFacesPanel
 import main.scala.Resources.Resources
 
 import swing._
@@ -25,7 +24,7 @@ import org.json.JSONObject
 
 object FaceDetection{
 
-	def faceDetect(picLink : String) : Array[(Int, Int, Int, Int)] = {
+	def faceDetection(picLink : String) : Array[String] = {
 
 		// **********************************************
 		// *** Update or verify the following values. ***
@@ -72,20 +71,16 @@ object FaceDetection{
 			var entity: HttpEntity = response.getEntity();
 
 			if (entity != null) {
-				// Retrieve the face detection details
-				var jsonString: String = EntityUtils.toString(entity).trim();
-				println(jsonString)
-				var jsonArray: JSONArray = new JSONArray(jsonString);
-				var allFaces : Array[(Int, Int, Int, Int)] = Array.empty[(Int, Int, Int, Int)] 
+				// Retrieve the face detection details 
+				var entityString: String = EntityUtils.toString(entity);
+				println(entityString)
+				var jsonArray: JSONArray = new JSONArray(entityString);
+				var faceIds : Array[String] = Array.empty[String] 
 				for (i <- 0 to (jsonArray.length - 1)){
-					var top : Int = jsonArray.getJSONObject(i).getJSONObject("faceRectangle").getInt("top")
-					var left : Int = jsonArray.getJSONObject(i).getJSONObject("faceRectangle").getInt("left")
-					var width : Int = jsonArray.getJSONObject(i).getJSONObject("faceRectangle").getInt("width")
-					var height : Int = jsonArray.getJSONObject(i).getJSONObject("faceRectangle").getInt("height")
-					var faceRect : (Int, Int, Int, Int) = (top, left, width, height)
-					allFaces = allFaces :+ faceRect
+					var faceId : String = jsonArray.getJSONObject(i).getString("faceId")
+					faceIds = faceIds :+ faceId
 				}
-				return allFaces;
+				return faceIds;
 			}
 			return null;
 		} catch {
