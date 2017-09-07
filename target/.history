@@ -87,12 +87,6 @@ run
 compile
 run
 compile
-run
-compile
-run
-compile
-run
-compile
 run1
 run
 run1
@@ -497,4 +491,10 @@ run
 sbt
 run
 run -deprecation
+run
+exit
+run
+exit
+run
+exit
 run

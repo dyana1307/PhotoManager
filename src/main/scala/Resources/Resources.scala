@@ -20,7 +20,7 @@ object Resources{
 
 	val centreOfScreen : Point = new Point((getScreenWidth - frameWidth) / 2, (getScreenHeight - frameHeight) / 2)
 
-	var mainPanel : JPanel = new JPanel()
+	var mainPanel : JPanel = new JPanel
 
 	var previousPanel : JPanel = new JPanel
 

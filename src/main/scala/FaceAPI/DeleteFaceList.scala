@@ -2,7 +2,9 @@ package main.scala.FaceAPI;
 
 //// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
 import java.net.URI;
+import java.io.File
 
+import org.apache.commons.io.FileUtils
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -11,6 +13,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+
 
 object DeleteFaceList {
 	def deleteFaceList(listId : String) : String = {
@@ -50,6 +53,7 @@ object DeleteFaceList {
 			if (entity != null) {
 				val entityString : String = EntityUtils.toString(entity)
 				if (entityString.isEmpty()){
+					FileUtils.deleteDirectory(new File("FaceLists/" + listId))
 					return("List " + listId + " was deleted successfully!")
 				}
 				else{

@@ -80,6 +80,15 @@ object GetFaceList {
         }
 	}
 
+	def getFaceId(listId : String, userData : String) : String = {
+		val listDetails : Array[(String, String)] = getFaceList(listId)
+
+		for(list <- listDetails){
+			if(list._2 == userData) return list._1
+		}
+		return "Id not found"
+	}
+
 	def getFaceListFaceIds(listId : String) : Array[String] = {
 		val listDetails : Array[(String, String)] = getFaceList(listId)
 		var listIds : Array[String] = Array.empty[String]
@@ -99,5 +108,16 @@ object GetFaceList {
 			if(list._1 == faceId) return list._2
 		}
 		return "Data not found"
+	}
+
+
+	def getListOfUserData(listId : String) : Array[String] = {
+		val listDetails : Array[(String, String)] = getFaceList(listId)
+		var userDataList : Array[String] = Array.empty[String]
+
+		for(list <- listDetails){
+			userDataList = userDataList :+ list._2
+		}
+		return userDataList
 	}
 }

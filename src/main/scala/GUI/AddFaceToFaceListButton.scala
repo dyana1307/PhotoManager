@@ -5,6 +5,7 @@ import javax.swing._
 import java.io.File
 import main.scala.Resources.Resources
 import main.scala.FaceAPI._
+import org.apache.commons.io.{FileUtils, FilenameUtils}
 
 class AddFaceToFaceListButton extends JButton{
 	setText("Add face")
@@ -36,6 +37,8 @@ class AddFaceToFaceListButton extends JButton{
 				val result : Int = JOptionPane.showConfirmDialog(null, panel, "Choose a face list", JOptionPane.OK_CANCEL_OPTION)
 
 				if(result == JOptionPane.OK_OPTION){
+					FileUtils.copyFileToDirectory(new File(fileChooser.getSelectedFile().getPath()), new File("FaceLists/" + idsBox.getSelectedItem().asInstanceOf[String]))
+					FileUtils.moveFile(FileUtils.getFile("FaceLists/" + idsBox.getSelectedItem().asInstanceOf[String] + "/" + fileChooser.getSelectedFile().getName() ), FileUtils.getFile("FaceLists/" + idsBox.getSelectedItem().asInstanceOf[String] + "/" + userDataField.getText() + ".png"))
 					JOptionPane.showMessageDialog(new JFrame, AddFaceToFaceList.addFaceToFaceList(idsBox.getSelectedItem().asInstanceOf[String], userDataField.getText() , fileChooser.getSelectedFile().getPath()));
 				}
 

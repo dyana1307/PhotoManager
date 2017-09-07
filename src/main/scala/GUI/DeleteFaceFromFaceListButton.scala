@@ -5,6 +5,7 @@ import javax.swing._
 import java.io.File
 import main.scala.Resources.Resources
 import main.scala.FaceAPI._
+import org.apache.commons.io.FileUtils
 
 class DeleteFaceFromFaceListButton extends JButton{
 	setText("Delete face")
@@ -21,7 +22,7 @@ class DeleteFaceFromFaceListButton extends JButton{
 			panel.add(new JLabel("Existing face lists: "))
 			panel.add(idsBox)
 
-			val listOfFaces : Array[String] = GetFaceList.getFaceListFaceIds(idsBox.getSelectedItem().asInstanceOf[String])
+			val listOfFaces : Array[String] = GetFaceList.getListOfUserData(idsBox.getSelectedItem().asInstanceOf[String])
 
 			val faceIdsBox : JComboBox[String] = new JComboBox(listOfFaces)
 
@@ -42,7 +43,8 @@ class DeleteFaceFromFaceListButton extends JButton{
 			val result : Int = JOptionPane.showConfirmDialog(null, panel, "Choose a face list and a face ID", JOptionPane.OK_CANCEL_OPTION)
 
 			if(result == JOptionPane.OK_OPTION){
-				JOptionPane.showMessageDialog(new JFrame, DeleteFaceFromFaceList.deleteFaceFromFaceList(idsBox.getSelectedItem().asInstanceOf[String], faceIdsBox.getSelectedItem().asInstanceOf[String]));
+				JOptionPane.showMessageDialog(new JFrame, DeleteFaceFromFaceList.deleteFaceFromFaceList(idsBox.getSelectedItem().asInstanceOf[String], GetFaceList.getFaceId(idsBox.getSelectedItem().asInstanceOf[String], faceIdsBox.getSelectedItem().asInstanceOf[String])))
+				FileUtils.deleteQuietly(FileUtils.getFile("FaceLists/" + idsBox.getSelectedItem().asInstanceOf[String] + "/" + faceIdsBox.getSelectedItem().asInstanceOf[String] + ".png"))
 			}
 
 		}

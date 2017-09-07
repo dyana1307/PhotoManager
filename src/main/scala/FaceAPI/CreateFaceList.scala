@@ -4,6 +4,8 @@ package main.scala.FaceAPI;
 //and the org.json library (org.json:json:20170516).
 
 import java.net.URI;
+import java.io.File
+import java.nio.file.{Path, Paths, Files}
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -58,6 +60,9 @@ object CreateFaceList {
             if (entity != null) {
                 val entityString : String = EntityUtils.toString(entity)
                 if (entityString.isEmpty()){
+                    //println(Files.createDirectory(Paths.get("FaceLists/" + listId), null))
+                    var dir : File = new File("FaceLists/" + listId)
+                    dir.mkdir()
                     return("List " + listName + " was created successfully!")
                 }
                 else{

@@ -4,7 +4,7 @@
 		module="photom_2.10"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170808164624"
+		publication="20170908003641"
 	>
 		<description>
 		photom
@@ -37,6 +37,7 @@
 		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.5.3" conf="compile->default(compile)"/>
 		<dependency org="org.json" name="json" rev="20170516" conf="compile->default(compile)"/>
 		<dependency org="org.scala-lang" name="scala-swing" rev="2.10.6" conf="compile->default(compile)"/>
+		<dependency org="commons-io" name="commons-io" rev="2.5" conf="compile->default(compile)"/>
 		<dependency org="org.bytedeco" name="javacv" rev="0.9" conf="compile->default(compile)">
 			<exclude org="org.bytedeco.javacpp-presets" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>
 			<exclude org="org.bytedeco.javacpp" module="*" name="*" type="*" ext="*" conf="" matcher="exact"/>

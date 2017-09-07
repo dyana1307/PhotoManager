@@ -1,23 +1,6 @@
 [0m[[0mdebug[0m] [0mjavaOptions: List()[0m
 [0m[[0minfo[0m] [0mRunning main.scala.GUI.MainMenu [0m
-[0m[[0minfo[0m] [0m[{"faceId":"50a58e9b-73a8-49cd-afe7-922a559ab67a","faceRectangle":{"top":157,"left":185,"width":294,"height":311}}][0m
-[0m[[0minfo[0m] [0m[][0m
-[0m[[0minfo[0m] [0m[{"faceId":"26542543-b63a-48d5-a40f-0475e9e5c10d","faceRectangle":{"top":169,"left":182,"width":297,"height":308}}][0m
-[0m[[0minfo[0m] [0m[][0m
-[0m[[0minfo[0m] [0m[{"faceId":"bf9e3dd7-f267-4793-8f7b-69a2ebff49ad","faceRectangle":{"top":150,"left":152,"width":318,"height":318}}][0m
-[0m[[0minfo[0m] [0m[][0m
-[0m[[0minfo[0m] [0m[{"faceId":"b307846d-51a9-4ee3-881d-16888c18df4f","faceRectangle":{"top":161,"left":165,"width":313,"height":313}}][0m
-[0m[[0minfo[0m] [0m[][0m
-[0m[[0minfo[0m] [0m[{"faceId":"6e90ca40-6fb7-4934-ae0c-ae77d0f97597","faceRectangle":{"top":152,"left":193,"width":286,"height":295}}][0m
-[0m[[0minfo[0m] [0m[{"persistedFaceId":"50fb67d4-165c-4f0c-bb3f-f05ce750eeb2","confidence":0.605781436}][0m
-[0m[[0minfo[0m] [0m[{"faceId":"4e5f578d-8cca-4ebe-86e5-111c7d5cddbb","faceRectangle":{"top":171,"left":175,"width":304,"height":309}}][0m
-[0m[[0minfo[0m] [0m[{"persistedFaceId":"50fb67d4-165c-4f0c-bb3f-f05ce750eeb2","confidence":0.6443421}][0m
-[0m[[0minfo[0m] [0m[{"faceId":"ab0ce510-f243-4864-8c12-7c16fe9d2c42","faceRectangle":{"top":165,"left":177,"width":302,"height":309}}][0m
-[0m[[0minfo[0m] [0m[0m
-[0m[[0minfo[0m] [0m					{ "error": { "code": "RateLimitExceeded", "message": "Rate limit is exceeded. Try again later." } }[0m
-[0m[[31merror[0m] [0mException in thread "Thread-4" java.lang.NullPointerException[0m
-[0m[[0minfo[0m] [0m		        	[0m
-[0m[[31merror[0m] [0m	at main.scala.GUI.FeedbackPanel$$anon$1$$anonfun$run$1.apply$mcVI$sp(RecognitionPanel.scala:32)[0m
-[0m[[0minfo[0m] [0mA JSONArray text must start with '[' at 7 [character 6 line 2][0m
-[0m[[31merror[0m] [0m	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:141)[0m
-[0m[[31merror[0m] [0m	at main.scala.GUI.FeedbackPanel$$anon$1.run(RecognitionPanel.scala:30)[0m
+[0m[[0minfo[0m] [0m[{"faceId":"0a6d6a72-41e1-4c68-aaee-2a74e1f648fa","faceRectangle":{"top":141,"left":280,"width":156,"height":156}}][0m
+[0m[[0minfo[0m] [0m[{"persistedFaceId":"b412c3ce-9f98-4091-a01a-062b9117f5fd","confidence":0.505467832}][0m
+[0m[[0minfo[0m] [0m[{"faceId":"7dd884c8-e4e0-4d14-8817-ad33cc010536","faceRectangle":{"top":174,"left":289,"width":143,"height":143}}][0m
+[0m[[0minfo[0m] [0m[{"persistedFaceId":"b412c3ce-9f98-4091-a01a-062b9117f5fd","confidence":0.700425}][0m

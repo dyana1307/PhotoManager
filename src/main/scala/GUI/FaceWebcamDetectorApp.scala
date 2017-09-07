@@ -88,7 +88,7 @@ class FaceWebcamDetectorApp{
 
         }
 
-        if(System.currentTimeMillis() - lastSaveTime > 3000 && !faces.isEmpty){
+        if(System.currentTimeMillis() - lastSaveTime > 5000 && !faces.isEmpty){
           mat.copyFrom(img.getBufferedImage)
           opencv_imgproc.cvtColor(mat, greyMat, opencv_imgproc.CV_BGR2GRAY, 1)
           opencv_imgproc.equalizeHist(greyMat, greyMat)
@@ -103,10 +103,6 @@ class FaceWebcamDetectorApp{
           cvRectangle(img,
             opencv_core.cvPoint(f.faceRect.x, f.faceRect.y),
             opencv_core.cvPoint(f.faceRect.x + f.faceRect.width, f.faceRect.y + f.faceRect.height), AbstractCvScalar.RED, 1, CV_AA, 0)
-
-         // draw the face number
-         val cvPoint = opencv_core.cvPoint(f.faceRect.x, f.faceRect.y - 20)
-          cvPutText(img, s"Face ${f.id}", cvPoint, cvFont, AbstractCvScalar.RED)
         }
         canvas.showImage(img)
       }

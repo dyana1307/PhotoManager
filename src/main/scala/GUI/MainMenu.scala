@@ -41,15 +41,14 @@ class MainPanel extends JPanel{
 }
 
 class ButtonPanel extends JPanel{
-	var glayout : GridLayout = new GridLayout(8, 0)
+	var glayout : GridLayout = new GridLayout(4, 0)
 	setLayout(glayout)
 	setPreferredSize(new Dimension(200, 300))
 	var label : JLabel = new JLabel("Welcome to Photo Manager!")
 	label.setHorizontalAlignment(SwingConstants.CENTER)
 	add(label)
-	add(new StartWebcamButton)
 	add(new FaceListsPanelButton())
-	add(new JButton("Options"))
+	add(new OpenWebpageButton)
 	add(new ExitButton)
 }
 

@@ -14,6 +14,9 @@ libraryDependencies += "org.json" % "json" % "20170516"
 // https://mvnrepository.com/artifact/org.scala-lang/scala-swing
 libraryDependencies += "org.scala-lang" % "scala-swing" % "2.10.6"
 
+// https://mvnrepository.com/artifact/commons-io/commons-io
+libraryDependencies += "commons-io" % "commons-io" % "2.5"
+
 val javacvVersion = "0.9"
 
 val javacppVersion = "0.9"
