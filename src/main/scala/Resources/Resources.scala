@@ -3,6 +3,8 @@ package main.scala.Resources
 import java.io.File
 import java.awt._
 import javax.swing._
+import util.control.Breaks._
+import org.apache.commons.io.{FileUtils, FilenameUtils}
 import main.scala.GUI.FaceWebcamDetectorApp
 
 object Resources{
@@ -36,7 +38,7 @@ object Resources{
 		previousPanel = mainPanel.getComponent(0).asInstanceOf[JPanel]
 	}
 
-	var selectedFaceList : String = "test"
+	var selectedFaceList : String = ""
 
 	var filePaths : Array[File] = Array.empty[File]
 
@@ -58,5 +60,18 @@ object Resources{
 			}
 		}
 		currentWebcamThread = webcamThread
+	}
+
+	def deleteSnapshots{
+		var i : Int = 1
+			breakable{
+				while(true){
+					if(new File("Pics\\" + i + ".jpg").exists()){
+						FileUtils.deleteQuietly(FileUtils.getFile("Pics/" + i + ".jpg"))
+						i += 1
+					}
+					else break
+				}
+			}
 	}
 }

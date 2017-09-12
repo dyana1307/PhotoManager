@@ -1,6 +1,8 @@
 [0m[[0mdebug[0m] [0mjavaOptions: List()[0m
 [0m[[0minfo[0m] [0mRunning main.scala.GUI.MainMenu [0m
-[0m[[0minfo[0m] [0m[{"faceId":"0a6d6a72-41e1-4c68-aaee-2a74e1f648fa","faceRectangle":{"top":141,"left":280,"width":156,"height":156}}][0m
-[0m[[0minfo[0m] [0m[{"persistedFaceId":"b412c3ce-9f98-4091-a01a-062b9117f5fd","confidence":0.505467832}][0m
-[0m[[0minfo[0m] [0m[{"faceId":"7dd884c8-e4e0-4d14-8817-ad33cc010536","faceRectangle":{"top":174,"left":289,"width":143,"height":143}}][0m
-[0m[[0minfo[0m] [0m[{"persistedFaceId":"b412c3ce-9f98-4091-a01a-062b9117f5fd","confidence":0.700425}][0m
+[0m[[0minfo[0m] [0m[{"faceId":"eea061f9-2bf4-4433-90a1-8afc7aa628ab","faceRectangle":{"top":187,"left":202,"width":233,"height":233}}][0m
+[0m[[0minfo[0m] [0m[][0m
+[0m[[0minfo[0m] [0m[{"faceId":"c2b0f6ed-71cb-4fe3-91bc-83f9724e45af","faceRectangle":{"top":181,"left":198,"width":236,"height":236}}][0m
+[0m[[0minfo[0m] [0m[][0m
+[0m[[0minfo[0m] [0m[{"faceId":"db3b224b-1e14-4e2a-a6b9-6f349ae4fa92","faceRectangle":{"top":179,"left":209,"width":240,"height":240}}][0m
+[0m[[0minfo[0m] [0m[][0m
